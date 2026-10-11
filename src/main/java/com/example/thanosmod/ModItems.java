@@ -1,6 +1,6 @@
 package com.example.thanosmod;
 
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -82,7 +82,7 @@ public final class ModItems {
     }
 
     public static void init() {
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COMBAT).register(entries -> {
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COMBAT).register(entries -> {
             entries.accept(INFINITY_GAUNTLET);
             entries.accept(DOUBLE_EDGED_SWORD);
             entries.accept(THANOS_HELMET);

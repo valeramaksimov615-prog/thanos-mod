@@ -5,6 +5,7 @@ import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -12,6 +13,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Relative;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -24,6 +26,7 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Перчатка Бесконечности.
@@ -85,10 +88,7 @@ public class InfinityGauntletItem extends Item {
         if (player.isShiftKeyDown()) {
             int next = (stack.getOrDefault(ModComponents.STONE, 0) + 1) % Stone.values().length;
             stack.set(ModComponents.STONE, next);
-            if (!level.isClientSide()) {
-                player.displayClientMessage(
-                        Component.translatable("message.thanosmod.selected", Stone.values()[next].display()), true);
-            }
+            actionBar(player, Component.translatable("message.thanosmod.selected", Stone.values()[next].display()));
             return InteractionResult.SUCCESS;
         }
 
@@ -122,7 +122,8 @@ public class InfinityGauntletItem extends Item {
             case POWER:
                 for (LivingEntity e : nearby(level, player, 8)) {
                     e.hurtServer(level, level.damageSources().playerAttack(player), 20.0f);
-                    e.knockback(2.5, player.getX() - e.getX(), player.getZ() - e.getZ());
+                    Vec3 away = new Vec3(e.getX() - player.getX(), 0, e.getZ() - player.getZ()).normalize().scale(1.8);
+                    e.push(away.x, 0.6, away.z);
                 }
                 return true;
             case TIME:
@@ -158,8 +159,10 @@ public class InfinityGauntletItem extends Item {
                 ? end
                 : hit.getLocation().subtract(look.scale(0.6));
         burst(level, player, Stone.SPACE.color);
-        boolean ok = player.randomTeleport(target.x, target.y - player.getEyeHeight(), target.z, true);
-        if (ok) player.resetFallDistance();
+        if (!(player instanceof ServerPlayer sp)) return false;
+        boolean ok = sp.teleportTo(level, target.x, target.y - player.getEyeHeight(), target.z,
+                Set.<Relative>of(), sp.getYRot(), sp.getXRot(), false);
+        if (ok) sp.resetFallDistance();
         return ok;
     }
 
@@ -176,8 +179,14 @@ public class InfinityGauntletItem extends Item {
                 removed++;
             }
         }
-        player.displayClientMessage(Component.translatable("message.thanosmod.snap", removed), true);
+        actionBar(player, Component.translatable("message.thanosmod.snap", removed));
         return true;
+    }
+
+    private static void actionBar(Player player, Component text) {
+        if (player instanceof ServerPlayer sp) {
+            sp.sendSystemMessage(text, true);
+        }
     }
 
     private static void burst(ServerLevel level, Player player, int color) {
