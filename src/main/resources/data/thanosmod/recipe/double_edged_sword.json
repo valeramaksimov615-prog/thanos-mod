@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "N",
+    "N",
+    "B"
+  ],
+  "key": {
+    "N": "minecraft:netherite_ingot",
+    "B": "minecraft:blaze_rod"
+  },
+  "result": {
+    "id": "thanosmod:double_edged_sword",
+    "count": 1
+  }
+}

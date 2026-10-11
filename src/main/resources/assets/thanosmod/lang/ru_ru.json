@@ -1,0 +1,17 @@
+{
+  "item.thanosmod.infinity_gauntlet": "Перчатка Бесконечности",
+  "item.thanosmod.thanos_helmet": "Шлем Таноса",
+  "item.thanosmod.thanos_chestplate": "Нагрудник Таноса",
+  "item.thanosmod.thanos_leggings": "Поножи Таноса",
+  "item.thanosmod.thanos_boots": "Ботинки Таноса",
+  "item.thanosmod.double_edged_sword": "Двулезвийный меч",
+  "stone.thanosmod.space": "Камень Пространства",
+  "stone.thanosmod.mind": "Камень Разума",
+  "stone.thanosmod.reality": "Камень Реальности",
+  "stone.thanosmod.power": "Камень Силы",
+  "stone.thanosmod.time": "Камень Времени",
+  "stone.thanosmod.soul": "Камень Души",
+  "stone.thanosmod.snap": "Щелчок",
+  "message.thanosmod.selected": "Выбрано: %s",
+  "message.thanosmod.snap": "Идеальный баланс. Исчезло враждебных мобов: %s"
+}

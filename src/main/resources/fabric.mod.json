@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "thanosmod",
+  "version": "${version}",
+  "name": "Thanos Mod",
+  "description": "Перчатка Бесконечности, броня и Двулезвийный меч Таноса.",
+  "authors": ["You"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.example.thanosmod.ThanosMod"]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "~26.3",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}

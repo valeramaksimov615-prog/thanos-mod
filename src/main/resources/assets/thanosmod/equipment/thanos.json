@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "thanosmod:thanos"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "thanosmod:thanos"
+      }
+    ]
+  }
+}

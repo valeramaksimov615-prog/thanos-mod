@@ -1,0 +1,17 @@
+{
+  "item.thanosmod.infinity_gauntlet": "Infinity Gauntlet",
+  "item.thanosmod.thanos_helmet": "Thanos' Helmet",
+  "item.thanosmod.thanos_chestplate": "Thanos' Chestplate",
+  "item.thanosmod.thanos_leggings": "Thanos' Leggings",
+  "item.thanosmod.thanos_boots": "Thanos' Boots",
+  "item.thanosmod.double_edged_sword": "Double-Edged Sword",
+  "stone.thanosmod.space": "Space Stone",
+  "stone.thanosmod.mind": "Mind Stone",
+  "stone.thanosmod.reality": "Reality Stone",
+  "stone.thanosmod.power": "Power Stone",
+  "stone.thanosmod.time": "Time Stone",
+  "stone.thanosmod.soul": "Soul Stone",
+  "stone.thanosmod.snap": "The Snap",
+  "message.thanosmod.selected": "Selected: %s",
+  "message.thanosmod.snap": "Perfectly balanced. Hostile mobs removed: %s"
+}
